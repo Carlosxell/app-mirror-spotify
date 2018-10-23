@@ -9,32 +9,48 @@ export default new Vuex.Store({
     authEndpoint: 'https://accounts.spotify.com/authorize',
     clientId: '59c332282f6c48d8a651556d0f72c8e3',
     redirectUri: window.location.origin,
-    scopes: [
-      'user-read-birthdate',
-      'user-read-email',
-      'user-read-private',
-    ],
+    search: '',
+    searchResult: null,
   },
   mutations: {
     ADD_SESSION(state, payload) {
       // eslint-disable-next-line
       state.session = payload;
     },
+    ADD_SEARCH_RESULT(state, payload) {
+      // eslint-disable-next-line
+      state.searchResult = payload;
+    },
     CLEAR_SESSION(state) {
       // eslint-disable-next-line
       state.session = null;
     },
+    SET_SEARCH(state, payload) {
+      // eslint-disable-next-line
+      state.search = payload;
+    },
   },
   getters: {
+    getSearch: state => state.search,
     getSession: state => state.session,
     getEndPoint: state => state.authEndpoint,
     getClientId: state => state.clientId,
     getUri: state => state.redirectUri,
-    getScopes: state => state.scopes,
+    getResults: state => state.searchResult,
+    getAlbums: state => state.searchResult ? state.searchResult.albums : null,
+    getArtists: state => state.searchResult ?  state.searchResult.artists : null,
+    getPlaylists: state => state.searchResult ? state.searchResult.playlists : null,
+    getTracks: state => state.searchResult ? state.searchResult.tracks : null,
   },
   actions: {
     addSession: (context, payload) => {
       context.commit('ADD_SESSION', payload);
+    },
+    addSearchResult: (context, payload) => {
+      context.commit('ADD_SEARCH_RESULT', payload);
+    },
+    setSearch: (context, payload) => {
+      context.commit('SET_SEARCH', payload);
     },
   },
 });

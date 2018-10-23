@@ -3,8 +3,9 @@
     <Header msg="Home" />
 
     <div class="content">
-      <div class="content_view"></div>
-      <router-view/>
+      <div class="content_view">
+        <router-view/>
+      </div>
     </div>
   </div>
 </template>
@@ -26,7 +27,6 @@ export default {
     };
 
     if (this.$route.hash && this.$route.hash.match(/#access_token=/)) {
-      console.info(TOKEN, 'token');
       this.$store.dispatch('addSession', TOKEN);
     }
   },
@@ -42,9 +42,12 @@ export default {
     @include calc(height, '100vh - #{pxToRem(60)}', null);
 
     &_view {
-      margin: pxToRem(60) auto 0;
+      @include flexContainer(flex, null, null, center, center, center);
+      @include calc(min-height, '100vh - #{pxToRem(120)}', null);
+      margin: pxToRem(40) auto 0;
       max-width: pxToRem(768);
       padding: 0 pxToRem(12);
+      text-align: center;
     }
   }
 </style>
