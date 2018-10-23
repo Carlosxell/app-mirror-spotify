@@ -1,20 +1,18 @@
 <template>
   <div class="albums">
-    <h2 class="title">Álbums</h2>
+    <h2 class="title">Artistas</h2>
 
     <div class="boxAlbum"
-         v-for="item in getAlbums.items" :key="item.id">
+         v-for="item in getArtists.items" :key="item.id">
       <figure class="boxAlbum_wrap">
         <img :alt="item.name"
              class="boxAlbum_wrap_img"
-             :src="item.images[1].url"
+             :src="item.images && item.images[0] ? item.images[0].url : 'https://via.placeholder.com/350x150'"
              :title="item.name" />
       </figure>
 
       <div class="boxAlbum_content">
-        <h4 class="boxAlbum_content_title">{{ item.artists[0].name }}</h4>
-
-        <h5 class="boxAlbum_content_subTitle">{{ item.name }}</h5>
+        <h4 class="boxAlbum_content_title">{{ item.name }}</h4>
       </div>
     </div>
   </div>
@@ -53,16 +51,16 @@ export default {
   }
 
   .boxAlbum {
-    border: pxToRem(1.6) solid $color-dark;
+    border: pxToRem(1) solid $color-dark;
     border-radius: pxToRem(4);
     @include flexContainer(flex, null, null, space-between, center, center);
-    max-height: pxToRem(166);
+    max-height: pxToRem(124);
     margin-bottom: pxToRem(20);
     overflow: hidden;
 
     &_wrap {
-      height: pxToRem(164);
-      max-width: pxToRem(164);
+      height: pxToRem(122);
+      max-width: pxToRem(122);
       position: relative;
 
       &_img {
@@ -77,7 +75,7 @@ export default {
     }
 
     &_content {
-      @include calc(width, '100% - #{pxToRem(168)}', null);
+      @include calc(width, '100% - #{pxToRem(124)}', null);
     }
   }
 </style>

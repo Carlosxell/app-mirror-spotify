@@ -10,10 +10,10 @@
                    to="/artists"
                    v-if="getArtists">{{ getArtists ? getArtists.items.length : '0' }} Artistas</router-link>
       <router-link class="resultList_content_box"
-                   to="/playlists"
+                   to="/"
                    v-if="getPlaylists">{{ getPlaylists ? getPlaylists.items.length : '0' }} Playlists</router-link>
       <router-link class="resultList_content_box"
-                   to="/musics"
+                   to="/"
                    v-if="getTracks">{{ getTracks ? getTracks.items.length : '0' }} Músicas</router-link>
     </div>
   </div>
