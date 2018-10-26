@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <div class="header" id="header">
     <nav class="header_nav">
       <ul class="header_menu">
         <li class="header_menu_item">
@@ -7,12 +7,12 @@
         </li>
       </ul>
     </nav>
-  </header>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'AppHeader',
   props: {
     msg: String,
   },
@@ -34,6 +34,7 @@ export default {
     right: 0;
     top: 0;
     width: 100%;
+    z-index: 10;
 
     &_nav {
       @include flexContainer(flex, null, null, null, center, center);

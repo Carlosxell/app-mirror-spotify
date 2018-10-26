@@ -5,16 +5,16 @@
     <div class="resultList_content">
       <router-link class="resultList_content_box"
                    to="/albums"
-                   v-if="getAlbums">{{ getAlbums ? getAlbums.items.length : '0' }} Álbuns</router-link>
+                   v-if="getAlbums">{{ getAlbums.items.length || '0' }} Álbuns</router-link>
       <router-link class="resultList_content_box"
                    to="/artists"
-                   v-if="getArtists">{{ getArtists ? getArtists.items.length : '0' }} Artistas</router-link>
+                   v-if="getArtists">{{ getArtists.items.length || '0' }} Artistas</router-link>
       <router-link class="resultList_content_box"
-                   to="/"
-                   v-if="getPlaylists">{{ getPlaylists ? getPlaylists.items.length : '0' }} Playlists</router-link>
+                   to="/playlists"
+                   v-if="getPlaylists">{{ getPlaylists.items.length || '0' }} Playlist</router-link>
       <router-link class="resultList_content_box"
-                   to="/"
-                   v-if="getTracks">{{ getTracks ? getTracks.items.length : '0' }} Músicas</router-link>
+                   to="/musics"
+                   v-if="getTracks">{{ getTracks.items.length || '0' }} Músicas</router-link>
     </div>
   </div>
 </template>

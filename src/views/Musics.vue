@@ -1,18 +1,13 @@
 <template>
   <div class="albums">
-    <h2 class="title">Artistas</h2>
+    <h2 class="title">Músicas</h2>
 
     <div class="boxAlbum"
-         v-for="item in getArtists.items" :key="item.id">
-      <figure class="boxAlbum_wrap">
-        <img :alt="item.name"
-             class="boxAlbum_wrap_img"
-             :src="item.images && item.images[0] ? item.images[0].url : 'https://via.placeholder.com/350x150'"
-             :title="item.name" />
-      </figure>
-
+         v-for="item in getTracks.items" :key="item.id">
       <div class="boxAlbum_content">
         <h4 class="boxAlbum_content_title">{{ item.name }}</h4>
+
+        <h5 class="boxAlbum_content_subTitle">{{ item.artists[0].name }}</h5>
       </div>
     </div>
   </div>
@@ -22,7 +17,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'Artists',
+  name: 'Musics',
   data() {
     return {};
   },
@@ -51,16 +46,17 @@ export default {
   }
 
   .boxAlbum {
-    border: pxToRem(1) solid $color-dark;
+    border: pxToRem(1.6) solid $color-dark;
     border-radius: pxToRem(4);
-    @include flexContainer(flex, null, null, space-between, center, center);
-    max-height: pxToRem(124);
+    @include flexContainer(flex, null, null, null, center, null);
     margin-bottom: pxToRem(20);
     overflow: hidden;
+    padding: pxToRem(10);
+    text-align: left;
 
     &_wrap {
-      height: pxToRem(122);
-      max-width: pxToRem(122);
+      height: pxToRem(164);
+      max-width: pxToRem(164);
       position: relative;
 
       &_img {
@@ -75,7 +71,17 @@ export default {
     }
 
     &_content {
-      @include calc(width, '100% - #{pxToRem(124)}', null);
+      width: 100%;
+
+      &_title {
+        font-size: pxToRem(18);
+        font-weight: 400;
+      }
+
+      &_subTitle {
+        font-size: pxToRem(14);
+        font-weight: 300;
+      }
     }
   }
 </style>

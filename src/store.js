@@ -37,9 +37,13 @@ export default new Vuex.Store({
     getClientId: state => state.clientId,
     getUri: state => state.redirectUri,
     getResults: state => state.searchResult,
+    // eslint-disable-next-line
     getAlbums: state => state.searchResult ? state.searchResult.albums : null,
+    // eslint-disable-next-line
     getArtists: state => state.searchResult ?  state.searchResult.artists : null,
+    // eslint-disable-next-line
     getPlaylists: state => state.searchResult ? state.searchResult.playlists : null,
+    // eslint-disable-next-line
     getTracks: state => state.searchResult ? state.searchResult.tracks : null,
   },
   actions: {

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header msg="Home" />
+    <app-header msg="Home" />
 
     <div class="content">
       <div class="content_view">
@@ -12,12 +12,12 @@
 
 <script>
 // @ is an alias to /src
-import Header from '@/components/Header.vue';
+import AppHeader from '@/components/App-header.vue';
 
 export default {
   name: 'header',
   components: {
-    Header,
+    AppHeader,
   },
   mounted() {
     const TOKEN = {

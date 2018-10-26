@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from './store';
 import Home from './views/Home.vue';
 
 Vue.use(Router);
@@ -22,6 +23,11 @@ export default new Router({
       path: '/artists',
       name: 'artists',
       component: () => import(/* webpackChunkName: "artists" */ './views/Artists.vue'),
+    },
+    {
+      path: '/musics',
+      name: 'musics',
+      component: () => import(/* webpackChunkName: "artists" */ './views/Musics.vue'),
     },
   ],
 });
