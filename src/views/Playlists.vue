@@ -1,15 +1,16 @@
 <template>
   <div class="albums">
-    <h2 class="title">Músicas</h2>
+    <h2 class="title">Playlists</h2>
 
-    <div class="boxAlbum"
-         v-for="item in getTracks.items" :key="item.id">
+    <a class="boxAlbum"
+       :href="item.external_urls.spotify"
+       v-for="item in getPlaylists.items" :key="item.id" target="_blank">
       <div class="boxAlbum_content">
         <h4 class="boxAlbum_content_title">{{ item.name }}</h4>
 
-        <h5 class="boxAlbum_content_subTitle">{{ item.artists[0].name }}</h5>
+        <h5 class="boxAlbum_content_subTitle">{{ item.tracks.total }} Músicas</h5>
       </div>
-    </div>
+    </a>
   </div>
 </template>
 
@@ -17,7 +18,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'Musics',
+  name: 'Playlists',
   data() {
     return {};
   },
@@ -53,9 +54,16 @@ export default {
     overflow: hidden;
     padding: pxToRem(10);
     text-align: left;
+    text-decoration: none !important;
 
     &_content {
       width: 100%;
+
+      &_title,
+      &_subTitle {
+        color: $color-dark;
+        text-decoration: none;
+      }
 
       &_title {
         font-size: pxToRem(18);
